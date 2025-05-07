@@ -5,8 +5,8 @@ import { ThemeProvider } from "@emotion/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./screens/navbar";
 import Dashboard from "./screens/dashboard";
-import Incomes from "./screens/incomes";
-import Expenses from "./screens/expenses";
+import Movement from "./screens/movements";
+import Categories from "./screens/categories";
 
 function App() {
   const theme = useMemo( () => createTheme(themeSettings), []);
@@ -21,8 +21,8 @@ function App() {
             />
             <Routes>
               <Route path="/" element={ <Dashboard /> } />
-              <Route path="/incomes" element={ <Incomes /> } />
-              <Route path="/expenses" element={ <Expenses /> } />
+              <Route path="/movements" element={ <Movement /> } />
+              <Route path="/categories" element={ <Categories /> } />
             </Routes>
           </Box>
         </ThemeProvider>
