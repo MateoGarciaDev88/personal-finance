@@ -45,26 +45,26 @@ const Navbar: FC<navbarProps> = ({
         </Box>
         <Box>
         <Link
-            to="/incomes"
-            onClick={() => setSelect("ingresos")}
+            to="/movements"
+            onClick={() => setSelect("movimientos")}
             style={{
-              color: select === "ingresos" ? "inherit" : palette.grey[700],
+              color: select === "movimientos" ? "inherit" : palette.grey[700],
               textDecoration: "inherit"
             }}
           >
-            Ingresos
+            Movimientos
           </Link>
         </Box>
         <Box>
         <Link
-            to="/expenses"
-            onClick={() => setSelect("egresos")}
+            to="/categories"
+            onClick={() => setSelect("categorias")}
             style={{
-              color: select === "egresos" ? "inherit" : palette.grey[700],
+              color: select === "categorias" ? "inherit" : palette.grey[700],
               textDecoration: "inherit"
             }}
           >
-            Egresos
+            Categorias
           </Link>
         </Box>
       </FlexBetween>
