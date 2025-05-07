@@ -1,6 +1,4 @@
-import { useTheme } from '@emotion/react';
-import { Box, useMediaQuery } from '@mui/material';
-import React from 'react'
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import DashboardBox from '../../components/DashboardBox';
 
 const gridTemplate = `
@@ -8,8 +6,8 @@ const gridTemplate = `
   "a a a"
   "a a a"
   "a a a"
-  "b c d"
-  "b c d"
+  "a a a"
+  "a a a"
   "b c d"
   "b c d"
   "b c d"

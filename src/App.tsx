@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import { themeSettings } from "./theme";
 import { ThemeProvider } from "@emotion/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./screens/navbar";
 import Dashboard from "./screens/dashboard";
 import Movement from "./screens/movements";
 import Categories from "./screens/categories";
+import Topbar from "./screens/global/Topbar";
 
 function App() {
   const theme = useMemo( () => createTheme(themeSettings), []);
@@ -16,7 +16,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
-            <Navbar
+            <Topbar
               x={1}
             />
             <Routes>

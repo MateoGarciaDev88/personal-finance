@@ -9,7 +9,7 @@ type navbarProps = {
   x: number
 }
 
-const Navbar: FC<navbarProps> = ({
+const Topbar: FC<navbarProps> = ({
   x,
 }) => {
   console.log('🚀 ~ x:', x);
@@ -72,4 +72,4 @@ const Navbar: FC<navbarProps> = ({
   )
 }
 
-export default Navbar
+export default Topbar;
