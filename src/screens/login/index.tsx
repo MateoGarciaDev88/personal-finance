@@ -31,6 +31,12 @@ return (
             <input type="password" value={contraseña} onChange={(obj) => setContraseña(obj.target.value)} required/>
         </div>
         <button type="submit">Iniciar sesión</button>
+        <div className="registro-link">
+            ¿No tienes cuenta?{' '}
+            <a href="/registro" style={{ color: '#007bff', textDecoration: 'underline' }}>
+            Regístrate aquí
+            </a>
+        </div>
         </form>
     </div>
     );
