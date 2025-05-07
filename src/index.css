@@ -78,3 +78,52 @@ body,
   outline: none; 
   box-shadow: 0 0 5px rgba(0, 145, 255, 0.5);
 }
+.formulario-registro {
+  width: 100%;
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-registro h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.formulario-registro div {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-registro label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.formulario-registro input,
+.formulario-registro select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formulario-registro button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario-registro button:hover {
+  background-color: #333;
+}

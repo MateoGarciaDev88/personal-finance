@@ -8,6 +8,7 @@ import Dashboard from "./screens/dashboard";
 import Movement from "./screens/movements";
 import Categories from "./screens/categories";
 import Login from "./screens/login";
+import Registro from "./screens/registro/Registro";
 
 function App() {
   const theme = useMemo( () => createTheme(themeSettings), []);
@@ -25,6 +26,7 @@ function App() {
               <Route path="/movements" element={ <Movement /> } />
               <Route path="/categories" element={ <Categories /> } />
               <Route path="/login" element={ <Login /> } />
+              <Route path="/registro" element={ <Registro /> } />
             </Routes>
           </Box>
         </ThemeProvider>

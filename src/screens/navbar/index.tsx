@@ -67,6 +67,18 @@ const Navbar: FC<navbarProps> = ({
             Categorias
           </Link>
         </Box>
+        <Box>
+          <Link
+            to="/login"
+            onClick={() => setSelect("login")}
+            style={{
+              color: select === "login" ? "inherit" : palette.grey[700],
+              textDecoration: "inherit"
+            }}
+          >
+            Login
+          </Link>
+          </Box>
       </FlexBetween>
     </FlexBetween>
   )
