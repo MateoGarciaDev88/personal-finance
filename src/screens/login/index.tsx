@@ -3,24 +3,15 @@
 import { useState } from 'react';
 import '/src/index.css';
 
-type Props = {
-    IniciarSesion: (correo: string, contraseña: string) => void;
-};
 
-const FormularioLogin: React.FC<Props> = ({ IniciarSesion }) => {
+const FormularioLogin = () => {
     const [correo, setCorreo] = useState('');
     const [contraseña, setContraseña] = useState('');
-
-    const manejarEnvio = (obj: React.FormEvent<HTMLFormElement>) => {
-    obj.preventDefault();
-    IniciarSesion(correo, contraseña); 
-    setCorreo('');
-    };
 
 return (
     <div className="formulario-login">
         <h2>Iniciar sesión</h2>
-        <form onSubmit={manejarEnvio}>
+        <form onSubmit={()=>console.log(correo, contraseña)}>
         <div>
             <label>Correo electrónico:</label>
             <input type="email" value={correo} onChange={(obj) => setCorreo(obj.target.value)} 
