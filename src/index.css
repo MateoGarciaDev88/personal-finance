@@ -13,71 +13,7 @@ body,
   align-items: center; 
   margin: 0; 
 }
-.formulario-login {
-  background-color: #fff; 
-  padding: 30px; 
-  border-radius: 8px; 
-  width: 300px; 
-  text-align: center;
-}
 
-/* Título del formulario */
-.formulario-login h2 {
-  color: #0a0a0a; 
-  margin-bottom: 20px; 
-}
-
-/* Contenedor de cada campo (label e input) */
-.formulario-login div {
-  margin-bottom: 15px;
-  text-align: left; 
-}
-
-/* Etiquetas de los campos */
-.formulario-login label {
-  display: block; 
-  margin-bottom: 5px;
-  color: #000000; 
-  font-size: 0.9em; 
-}
-
-/* Campos de entrada (input) */
-.formulario-login input[type="email"],
-.formulario-login input[type="password"] {
-  width: calc(100% - 12px); 
-  padding: 8px; 
-  border: 1px solid #000000; 
-  border-radius: 4px; 
-  font-size: 1em; 
-}
-
-.formulario-login input[type="email"]:focus,
-.formulario-login input[type="password"]:focus {
-  outline: none; 
-  border-color: #00d5ff;
-  box-shadow: 0 0 5px rgba(0, 200, 255, 0.5); 
-}
-
-/* Botón de Iniciar sesión */
-.formulario-login button[type="submit"] {
-  background-color: #99caff; 
-  color: rgb(17, 1, 1);
-  padding: 10px 15px;
-  border: none; 
-  border-radius: 4px;
-  cursor: pointer; 
-  font-size: 1em;
-  width: 100%; 
-}
-
-.formulario-login button[type="submit"]:hover {
-  background-color: #0080b3; 
-}
-
-.formulario-login button[type="submit"]:focus {
-  outline: none; 
-  box-shadow: 0 0 5px rgba(0, 145, 255, 0.5);
-}
 .formulario-registro {
   width: 100%;
   max-width: 450px;
@@ -126,4 +62,42 @@ body,
 
 .formulario-registro button:hover {
   background-color: #333;
+}
+.movimientos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.categoria-bloque {
+  flex: 1 1 300px;
+  background-color: #2d2d34;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #f0f0f3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.categoria-titulo {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #12efc8;
+}
+
+.movimiento {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  background-color: #1f2026;
+}
+
+.movimiento p {
+  margin: 0.3rem 0;
+}
+
+.sin-movimientos {
+  color: #b3b6c2;
+  font-style: italic;
 }
