@@ -5,9 +5,10 @@ import { ThemeProvider } from "@emotion/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./screens/navbar";
 import Dashboard from "./screens/dashboard";
-import Movement from "./screens/movements";
+import Movements from "./screens/movements";
 import Categories from "./screens/categories";
 import Login from "./screens/login";
+import Registro from "./screens/registro/Registro";
 
 function App() {
   const theme = useMemo( () => createTheme(themeSettings), []);
@@ -22,9 +23,10 @@ function App() {
             />
             <Routes>
               <Route path="/" element={ <Dashboard /> } />
-              <Route path="/movements" element={ <Movement /> } />
+              <Route path="/movements" element={ <Movements /> } />
               <Route path="/categories" element={ <Categories /> } />
               <Route path="/login" element={ <Login /> } />
+              <Route path="/registro" element={ <Registro /> } />
             </Routes>
           </Box>
         </ThemeProvider>
