@@ -56,10 +56,10 @@ const Dashboard = () => {
         }
       }
     >
-      <DashboardBox bgcolor="#fff" gridArea="a"></DashboardBox>
-      <DashboardBox bgcolor="#fff" gridArea="b"></DashboardBox>
-      <DashboardBox bgcolor="#fff" gridArea="c"></DashboardBox>
-      <DashboardBox bgcolor="#fff" gridArea="d"></DashboardBox>
+      <DashboardBox gridArea="a"></DashboardBox>
+      <DashboardBox gridArea="b"></DashboardBox>
+      <DashboardBox gridArea="c"></DashboardBox>
+      <DashboardBox gridArea="d"></DashboardBox>
     </Box>
   )
 }

@@ -8,6 +8,8 @@ import Movement from "./screens/movements";
 import Categories from "./screens/categories";
 import Topbar from "./screens/global/Topbar";
 import Login from "./screens/login";
+import { Sidebar } from "react-pro-sidebar";
+import SidebarComp from "./screens/global/Sidebar";
 
 function App() {
   const theme = useMemo( () => createTheme(themeSettings), []);
@@ -20,6 +22,7 @@ function App() {
             <Topbar
               x={1}
             />
+            <SidebarComp/>
             <Routes>
               <Route path="/" element={ <Dashboard /> } />
               <Route path="/movements" element={ <Movement /> } />
