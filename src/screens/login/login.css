@@ -1,20 +1,29 @@
-/* Contenedor general para centrar todo */
+@media (max-width: 400px) {
+  .formulario-login {
+    padding: 20px;
+  }
+
+  .formulario-login h2 {
+    font-size: 1.4em;
+  }
+}
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* altura completa del viewport */
-    background-color: #1e1e24; /* puedes ajustar el color de fondo aquí */
+    height: 100vh; 
+    background-color: #1e1e24; 
   }
   
   /* Estilo del formulario */
   .formulario-login {
-    background-color: #fff; 
-    padding: 30px; 
-    border-radius: 8px; 
-    width: 300px; 
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
     text-align: center;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* sombra opcional para mejor contraste */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
   }
   
   /* Título del formulario */
