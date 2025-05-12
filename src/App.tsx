@@ -28,7 +28,7 @@ function App() {
                 <Route path="/movements" element={ <Movements /> } />
                 <Route path="/categories" element={ <Categories /> } />
                 <Route path="/login" element={ <Login /> } />
-              <Route path="/registro" element={ <Registro /> } />
+                <Route path="/registro" element={ <Registro /> } />
               </Routes>
             </Box>
         </ThemeProvider>
