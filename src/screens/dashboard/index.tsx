@@ -1,6 +1,4 @@
-import { useTheme } from '@emotion/react';
-import { Box, useMediaQuery } from '@mui/material';
-import React from 'react'
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import DashboardBox from '../../components/DashboardBox';
 
 const gridTemplate = `
@@ -8,8 +6,8 @@ const gridTemplate = `
   "a a a"
   "a a a"
   "a a a"
-  "b c d"
-  "b c d"
+  "a a a"
+  "a a a"
   "b c d"
   "b c d"
   "b c d"
@@ -58,10 +56,10 @@ const Dashboard = () => {
         }
       }
     >
-      <DashboardBox bgcolor="#fff" gridArea="a"></DashboardBox>
-      <DashboardBox bgcolor="#fff" gridArea="b"></DashboardBox>
-      <DashboardBox bgcolor="#fff" gridArea="c"></DashboardBox>
-      <DashboardBox bgcolor="#fff" gridArea="d"></DashboardBox>
+      <DashboardBox gridArea="a"></DashboardBox>
+      <DashboardBox gridArea="b"></DashboardBox>
+      <DashboardBox gridArea="c"></DashboardBox>
+      <DashboardBox gridArea="d"></DashboardBox>
     </Box>
   )
 }
