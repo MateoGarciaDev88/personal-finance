@@ -71,7 +71,7 @@ return (
         </Button>
         <Typography variant="body2" textAlign="center">
             ¿No tienes cuenta?{" "}
-            <Link to="/register" style={{ color: "blue", textDecoration: "none" }}>
+            <Link to="/registro" style={{ color: "blue", textDecoration: "none" }}>
             Regístrate aquí
             </Link>
         </Typography>
