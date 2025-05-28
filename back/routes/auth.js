@@ -1,59 +1,55 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const db = require("../db");
+import express from 'express';
+import bcrypt from 'bcrypt';
+import pool from '../db.js';
 
 const router = express.Router();
 
-// Ruta de registro
-router.post("/registro", async (req, res) => {
-    const {
-        correo,
-        contraseña,
-        nombreCompleto,
-        usuario,
-        telefono,
-        fechaNacimiento,
-        pais,
-        genero,
-        aceptaTerminos,
-    } = req.body;
-
-  // Verifica campos obligatorios
-    if (!correo || !contraseña || !nombreCompleto || !usuario) {
-        return res.status(400).json({ message: "Campos obligatorios faltantes" });
-    }
-
+router.post('/registro', async (req, res) => {
     try {
-    // Hashear la contraseña
-    const hashedPassword = await bcrypt.hash(contraseña, 10);
+        const {
+            correo,
+            contraseña,
+            nombre_completo,
+            usuario,
+            telefono,
+            fecha_nacimiento,
+            pais,
+            genero,
+            acepta_terminos
+        } = req.body;
 
-    // Insertar usuario
-    const query = `INSERT INTO users (correo, contraseña, nombre_completo, usuario, telefono, fecha_nacimiento, pais, genero, acepta_terminos)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        const [existeCorreo] = await pool.promise().execute(
+            'SELECT id FROM users WHERE correo = ?',
+            [correo]
+        );
 
-    const values = [
-        correo,
-        hashedPassword,
-        nombreCompleto,
-        usuario,
-        telefono,
-        fechaNacimiento,
-        pais,
-        genero,
-        aceptaTerminos,
-    ];
-
-    db.query(query, values, (err, result) => {
-        if (err) {
-        console.error("Error al registrar:", err);
-        return res.status(500).json({ message: "Error al registrar usuario" });
+        if (existeCorreo.length > 0) {
+            return res.status(400).json({ message: 'El correo ya está registrado' });
         }
 
-        res.status(201).json({ message: "Usuario registrado correctamente" });
-    });
+        const [existeUsuario] = await pool.promise().execute(
+            'SELECT id FROM users WHERE usuario = ?',
+            [usuario]
+        );
+
+        if (existeUsuario.length > 0) {
+            return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
+        }
+
+        const contraseñaEncriptada = await bcrypt.hash(contraseña, 10);
+
+        await pool.promise().execute(
+            `INSERT INTO users (correo, contraseña, nombre_completo, usuario, telefono, fecha_nacimiento, pais, genero, acepta_terminos) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            [correo, contraseñaEncriptada, nombre_completo, usuario, telefono, fecha_nacimiento, pais, genero, acepta_terminos]
+        );
+
+        res.status(201).json({ message: 'Usuario registrado exitosamente' });
+
     } catch (error) {
-    res.status(500).json({ message: "Error en el servidor" });
+        console.error('Error en registro:', error);
+        res.status(500).json({ message: 'Error interno del servidor' });
     }
 });
 
-module.exports = router;
+export default router;

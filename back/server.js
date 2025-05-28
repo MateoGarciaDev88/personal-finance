@@ -1,20 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-const db = require("./db");
-const authRoutes = require("./routes/auth");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import db from "./db.js";
+import authRoutes from "./routes/auth.js";
+import verifyToken from "./middleware/verifyToken.js";
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
+app.use("/auth", authRoutes);
 
-// Rutas
-app.use("/api/auth", authRoutes);
-
-// Iniciar servidor
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
