@@ -14,15 +14,24 @@ const FormularioRegistro = () => {
     const [aceptaTerminos, setAceptaTerminos] = useState(false);
     const [mensaje, setMensaje] = useState('');
 
-    const manejarEnvio = async (obj: React.FormEvent<HTMLFormElement>) => {
-        obj.preventDefault(); 
+    const manejarEnvio = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         setMensaje(''); 
+
+        if (!correo || !contraseña || !confirmarContraseña || !nombreCompleto || !usuario) {
+            setMensaje("Por favor completa todos los campos obligatorios");
+            return;
+        }
 
         if (contraseña !== confirmarContraseña) {
             setMensaje("Las contraseñas no coinciden");
             return; 
         }
 
+        if (contraseña.length < 6) {
+            setMensaje("La contraseña debe tener al menos 6 caracteres");
+            return;
+        }
 
         const datosRegistro = {
             correo,
@@ -37,6 +46,8 @@ const FormularioRegistro = () => {
         };
 
         try {
+            console.log('Enviando datos:', datosRegistro);
+
             const response = await fetch('http://localhost:3000/auth/registro', {
                 method: 'POST', 
                 headers: {
@@ -44,12 +55,12 @@ const FormularioRegistro = () => {
                 },
                 body: JSON.stringify(datosRegistro),
             });
-
+            
             const data = await response.json(); 
+            console.log('Respuesta del servidor:', data);
 
             if (response.ok) { 
                 setMensaje(data.message || "Registro exitoso"); 
-                // Limpiar formulario
                 setCorreo('');
                 setContraseña('');
                 setConfirmarContraseña('');
@@ -65,7 +76,7 @@ const FormularioRegistro = () => {
             }
         } catch (error) {
             console.error("Error al enviar el formulario:", error);
-            setMensaje("Error de conexión con el servidor. Inténtalo de nuevo más tarde.");
+            setMensaje("Error de conexión. Verifica que el servidor esté funcionando.");
         }
     };
 
@@ -154,6 +165,7 @@ const FormularioRegistro = () => {
                         value={contraseña} 
                         onChange={(e) => setContraseña(e.target.value)} 
                         required 
+                        minLength={6}
                     />
                 </div>
 
@@ -181,7 +193,11 @@ const FormularioRegistro = () => {
 
                 <button type="submit">Registrarse</button>
             </form>
-            {mensaje && <p className="mensaje-formulario">{mensaje}</p>}
+            {mensaje && (
+                <p className={`mensaje-formulario ${mensaje.includes('exitoso') ? 'exito' : 'error'}`}>
+                    {mensaje}
+                </p>
+            )}
         </div>
     );
 }
