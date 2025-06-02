@@ -80,76 +80,97 @@ const FormularioRegistro = () => {
         }
     };
 
-    return (
-        <div className="formulario-registro">
-            <h2>Registrarse</h2>
-            <form onSubmit={manejarEnvio}>
-                <div>
-                    <label>Nombre completo:</label>
+return (
+    <div 
+        className="formulario-registro"
+        style={{
+            width: '100vw',
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px',
+            boxSizing: 'border-box',
+            backgroundColor: '#f5f5f5' // opcional
+        }}
+    >
+        <div style={{ width: '100%', maxWidth: '500px' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Registrarse</h2>
+            <form onSubmit={manejarEnvio} style={{ width: '100%' }}>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Nombre completo:</label>
                     <input 
                         type="text" 
                         value={nombreCompleto} 
                         onChange={(e) => setNombreCompleto(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>Nombre de usuario:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Nombre de usuario:</label>
                     <input 
                         type="text" 
                         value={usuario} 
                         onChange={(e) => setUsuario(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>Correo electrónico:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Correo electrónico:</label>
                     <input 
                         type="email" 
                         value={correo} 
                         onChange={(e) => setCorreo(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>Teléfono:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Teléfono:</label>
                     <input 
                         type="tel" 
                         value={telefono} 
                         onChange={(e) => setTelefono(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>Fecha de nacimiento:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Fecha de nacimiento:</label>
                     <input 
                         type="date" 
                         value={fechaNacimiento} 
                         onChange={(e) => setFechaNacimiento(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>País:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>País:</label>
                     <input 
                         type="text" 
                         value={pais} 
                         onChange={(e) => setPais(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>Género:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Género:</label>
                     <select 
                         value={genero} 
                         onChange={(e) => setGenero(e.target.value)} 
                         required
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     >
                         <option value="">Seleccione...</option>
                         <option value="Masculino">Masculino</option>
@@ -158,29 +179,31 @@ const FormularioRegistro = () => {
                     </select>
                 </div>
 
-                <div>
-                    <label>Contraseña:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Contraseña:</label>
                     <input 
                         type="password" 
                         value={contraseña} 
                         onChange={(e) => setContraseña(e.target.value)} 
                         required 
                         minLength={6}
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>Confirmar contraseña:</label>
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px' }}>Confirmar contraseña:</label>
                     <input 
                         type="password" 
                         value={confirmarContraseña} 
                         onChange={(e) => setConfirmarContraseña(e.target.value)} 
                         required 
+                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
                     />
                 </div>
 
-                <div>
-                    <label>
+                <div style={{ marginBottom: '20px' }}>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <input 
                             type="checkbox" 
                             checked={aceptaTerminos} 
@@ -191,15 +214,31 @@ const FormularioRegistro = () => {
                     </label>
                 </div>
 
-                <button type="submit">Registrarse</button>
+                <button 
+                    type="submit"
+                    style={{ 
+                        width: '100%', 
+                        padding: '12px', 
+                        backgroundColor: '#007bff', 
+                        color: 'white', 
+                        border: 'none', 
+                        borderRadius: '4px', 
+                        fontSize: '16px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    Registrarse
+                </button>
             </form>
             {mensaje && (
-                <p className={`mensaje-formulario ${mensaje.includes('exitoso') ? 'exito' : 'error'}`}>
+                <p className={`mensaje-formulario ${mensaje.includes('exitoso') ? 'exito' : 'error'}`}
+                style={{ marginTop: '20px', textAlign: 'center' }}
+                >
                     {mensaje}
                 </p>
             )}
         </div>
-    );
+    </div>
+);
 }
-
 export default FormularioRegistro;

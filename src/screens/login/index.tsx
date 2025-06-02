@@ -1,13 +1,13 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import './login.css';
-
 import log from "../../assets/log.png";
 
 const Login = () => {
     const [data, setData] = useState({ correo: "", contraseña: "" });
-    const navigate = useNavigate();
+    const { login } = useContext(AuthContext)!;
 
     const cambio = (e: React.ChangeEvent<HTMLInputElement>) => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -16,13 +16,13 @@ const Login = () => {
     const entrar = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-console.log("Datos que se envían:", {
+        console.log("Datos que se envían:", {
             correo: data.correo,
             contraseña: data.contraseña
         });
 
         try {
-            const response = await fetch("http://localhost:3001/auth/login", {
+            const response = await fetch("http://localhost:3000/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -39,13 +39,12 @@ console.log("Datos que se envían:", {
                 alert(result.message);
                 return;
             }
+            
+            login({
+                token: result.token,
+                user: result.user
+            });
 
-            // Guardar token y usuario
-            localStorage.setItem("token", result.token);
-            localStorage.setItem("user", JSON.stringify(result.user));
-
-            // Redirigir
-            navigate("/");
 
         } catch (error) {
             console.error("Error al iniciar sesión:", error);

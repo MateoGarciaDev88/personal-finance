@@ -6,11 +6,10 @@ import authRoutes from "./routes/auth.js";
 dotenv.config();
 
 const app = express();
-// ✅ CORRECCIÓN PRINCIPAL: Cambié el puerto por defecto a 3000 para que coincida con el frontend
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-    origin: "http://localhost:5173", // Puerto del frontend
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
 };
