@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MovimientosFinancieros from "./MovimientosFinancieros";
-import { Box, Button, IconButton, MenuItem, Modal, Stack, useTheme } from "@mui/material";
+import { Box, Button, IconButton, MenuItem, Modal, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useTheme } from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -57,6 +57,21 @@ const Movement = () => {
   const { palette } = useTheme();
   const [openModal, setOpenModal] = useState(false)
 
+  function createData(
+    amount: number,
+    name: string,
+    description: string,
+    action: string,
+  ) {
+    return { amount, name, description, action };
+  }
+
+  const rows = [
+    createData(1000, 'Gastos', 'categoria gastos', 'borrar'),
+    createData(1000, 'Gastos', 'categoria gastos', 'borrar'),
+    createData(1000, 'Gastos', 'categoria gastos', 'borrar'),
+  ]
+
 
   const handleOpen = () => setOpenModal(true)
   const handleClose = () => setOpenModal(false)
@@ -65,27 +80,64 @@ const Movement = () => {
     <Box 
       height="100%"
       width="100%"
-      sx={{
+    >
+      <MovimientosFinancieros movimientos={movimientos} />
+      <Stack direction='column' height='65%' sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between'
-      }}
-    >
-      <MovimientosFinancieros movimientos={movimientos} />
-      <Stack direction='row' spacing={1} sx={{
+      }}>
+        <Stack alignItems='center'>
+          <TableContainer 
+            sx={{
+              width: '60%',
+            }}
+          >
+            <Table sx={{ minWidth: 650}} aria-label="simple table">
+              <TableHead>
+                <TableCell>Cantidad</TableCell>
+                <TableCell>Categorias</TableCell>
+                <TableCell>Descripcion</TableCell>
+                <TableCell align="center" sx={{ width: '200px'}} >Acciones</TableCell>
+              </TableHead>
+              <TableBody>
+                { rows.map((row) => (
+                  <TableRow
+                    key={row.name}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {row.amount}
+                    </TableCell>
+                    <TableCell >
+                      {row.name}
+                    </TableCell>
+                    <TableCell>{row.description}</TableCell>
+                    <TableCell align='center'>
+                      <Button>Editar</Button>
+                      <Button>Eliminar</Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>  
+        </Stack>
+        <Stack direction='row' spacing={1} sx={{
           display: 'flex',
           justifyContent: 'flex-end',
         }}> 
-        <IconButton
-          onClick={handleOpen}
-          size="large"
-          sx={{
-            backgroundColor: palette.primary[100],
-            "&:hover": {color: palette.primary[100]}
-          }}
-        >
-          <AddSharpIcon fontSize="large" />
-        </IconButton>
+          <IconButton
+            onClick={handleOpen}
+            size="large"
+            sx={{
+              backgroundColor: palette.primary[100],
+              "&:hover": {color: palette.primary[100]}
+            }}
+          >
+            <AddSharpIcon fontSize="large" />
+          </IconButton>
+        </Stack>
       </Stack>
       <Modal
         open={openModal}

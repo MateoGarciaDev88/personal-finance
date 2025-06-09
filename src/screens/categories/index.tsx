@@ -2,6 +2,7 @@ import { Box, Button, IconButton, Modal, Stack, Table, TableBody, TableCell, Tab
 import { useState } from 'react';
 import DashboardBox from '../../components/DashboardBox';
 import AddSharpIcon from '@mui/icons-material/AddSharp';
+import { getCategories } from '../../api/categories.api'
 
 const style = {
   position: 'absolute',
@@ -33,6 +34,8 @@ const Categories = () => {
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
+  getCategories()
+
   return (
   <Box
     height="100%"
@@ -47,7 +50,7 @@ const Categories = () => {
     <Stack alignItems='center'>
       <TableContainer 
         sx={{
-          width: '70%',
+          width: '50%',
         }}
       >
         <Table sx={{ minWidth: 650}} aria-label="simple table">
@@ -67,7 +70,7 @@ const Categories = () => {
                 </TableCell>
                 <TableCell>{row.description}</TableCell>
                 <TableCell align='center'>
-                  <Button>Editar</Button>
+                  <Button >Editar</Button>
                   <Button>Eliminar</Button>
                 </TableCell>
               </TableRow>
