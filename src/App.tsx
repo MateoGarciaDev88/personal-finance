@@ -6,7 +6,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Categories, Dashboard, Login, Movements, Registro, Topbar } from './screens/index';
 import ProtectedRoute from "./screens/ProtectedRoute";
 import AuthProvider from "./auth/AuthProvider";
+// import { AuthProvider } from "./context/AuthContext";
 // import { AuthProvider } from "./auth/AuthProvider";
+// import PrivateRoute from "./components/PrivateRoute";
+
 
 function App() {
   const theme = useMemo( () => createTheme(themeSettings), []);

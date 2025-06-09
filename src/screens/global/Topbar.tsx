@@ -1,87 +1,85 @@
-import { useState, FC } from 'react'
-// import { themeSettings } from '../../theme'
-import { Box, Typography, useTheme } from '@mui/material';
+import { useState, useContext } from 'react';
+import { Box, Typography, useTheme, Button } from '@mui/material';
 import FitbitIcon from '@mui/icons-material/Fitbit';
+import LogoutIcon from '@mui/icons-material/Logout';
 import FlexBetween from '../../components/FlexBetween';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
-type navbarProps = {
-  x: number
-}
-
-const Topbar: FC<navbarProps> = ({
-  x,
-}) => {
-  console.log('🚀 ~ x:', x);
+const Navbar = () => {
   const { palette } = useTheme();
   const [select, setSelect] = useState('dashboard');
+  const { user, logout } = useContext(AuthContext)!;
 
   return (
-    <FlexBetween
-      mb="0.25rem"
-      p="0.5rem 0rem"
-      color={palette.grey[300]}
-    >
-      <FlexBetween
-        gap="0.75rem"
-      >
+    <FlexBetween mb="0.25rem" p="0.5rem 0rem" color={palette.grey[300]}>
+      <FlexBetween gap="0.75rem">
         <FitbitIcon sx={{ fontSize: "28px" }} />
         <Typography variant='h4' fontSize="16px">
           Finanzas Personales
         </Typography>
       </FlexBetween>
+
       <FlexBetween gap="2rem">
-        <Box sx={{ "&:hover": {color: palette.primary[100]} }}>
-          <Link
-            to="/"
+        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+          <Link 
+            to="/" 
             onClick={() => setSelect("dashboard")}
-            style={{
-              color: select === "dashboard" ? "inherit" : palette.grey[700],
-              textDecoration: "inherit"
+            style={{ 
+              color: select === "dashboard" ? "inherit" : palette.grey[700], 
+              textDecoration: "inherit" 
             }}
           >
             Dashboard
           </Link>
         </Box>
-        <Box>
-        <Link
-            to="/movements"
+        
+        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+          <Link 
+            to="/movements" 
             onClick={() => setSelect("movimientos")}
-            style={{
-              color: select === "movimientos" ? "inherit" : palette.grey[700],
-              textDecoration: "inherit"
+            style={{ 
+              color: select === "movimientos" ? "inherit" : palette.grey[700], 
+              textDecoration: "inherit" 
             }}
           >
             Movimientos
           </Link>
         </Box>
-        <Box>
-        <Link
-            to="/categories"
+        
+        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+          <Link 
+            to="/categories" 
             onClick={() => setSelect("categorias")}
-            style={{
-              color: select === "categorias" ? "inherit" : palette.grey[700],
-              textDecoration: "inherit"
+            style={{ 
+              color: select === "categorias" ? "inherit" : palette.grey[700], 
+              textDecoration: "inherit" 
             }}
           >
-            Categorias
+            Categorías
           </Link>
         </Box>
-        <Box>
-          <Link
-            to="/login"
-            onClick={() => setSelect("login")}
-            style={{
-              color: select === "login" ? "inherit" : palette.grey[700],
-              textDecoration: "inherit"
+
+        {/* Usuario y logout */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Typography variant="body2" color={palette.grey[100]}>
+            Hola, {user?.usuario || user?.nombre_completo}
+          </Typography>
+          <Button
+            onClick={logout}
+            startIcon={<LogoutIcon />}
+            size="small"
+            sx={{ 
+              color: palette.grey[300],
+              '&:hover': { color: palette.primary[100] }
             }}
           >
-            Login
-          </Link>
-          </Box>
+            Salir
+          </Button>
+        </Box>
       </FlexBetween>
     </FlexBetween>
-  )
-}
+  );
+};
 
-export default Topbar;
+export default Navbar;
