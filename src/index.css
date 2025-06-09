@@ -8,10 +8,10 @@ body,
   width: 100%;
   font-family: "Inter", sans-serif;
   background-color: #1f2026;
-  display: flex; 
+  /* display: flex; 
   justify-content: center; 
   align-items: center; 
-  margin: 0; 
+  margin: 0;  */
 }
 
 .formulario-registro {
@@ -100,4 +100,8 @@ body,
 .sin-movimientos {
   color: #b3b6c2;
   font-style: italic;
+}
+
+.table-container {
+  display: flex;
 }

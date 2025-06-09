@@ -4,91 +4,58 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MenuSharpIcon from '@mui/icons-material/MenuSharp';
 import MenuOpenSharpIcon from '@mui/icons-material/MenuOpenSharp';
+import { createTheme, styled } from '@mui/material/styles';
+import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
+import { PageContainer } from '@toolpad/core/PageContainer';
+import Grid from '@mui/material/Grid';
+import { DashboardLayout } from '@toolpad/core/DashboardLayout';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
-  const { palette } = useTheme();
-  return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: palette.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
-  )
-
-}
+const NAVIGATION: Navigation = [
+  {
+    segment: 'dashboard',
+    title: 'Dashboard',
+    icon: <DashboardIcon />,
+  },
+  {
+    segment: 'orders',
+    title: 'Orders',
+    icon: <ShoppingCartIcon />,
+  },
+]
 
 const SidebarComp = () => {
   const { palette } = useTheme();
   const [isCollapse, setIsCollapse] = useState(false);
   const [selected, setSelected] = useState("dashboard");
 
+  const Skeleton = styled('div')<{ height: number }>(({ theme, height }) => ({
+    backgroundColor: theme.palette.action.hover,
+    borderRadius: theme.shape.borderRadius,
+    height,
+    content: '" "',
+  }));
+
+
   return (
-    <Box
-      sx={{
-        '& .pro-sidebar-inner': {
-          background: `${palette.primary[400]} !important`
-        },
-        '& .pro-icon-wrapper': {
-          backgroundColor: 'transparent !important'
-        },
-        '& .pro-inner-item': {
-          padding: "5px 35px 5px 20px !important"
-        },
-        '& .pro-inner-item:hover': {
-          color: '#868dfb !important'
-        },
-        '& .pro-menu-item.active': {
-          color: '#6870fa !important'
-        },
-      }}
+    <AppProvider
+      navigation={NAVIGATION}
     >
-      <Sidebar collapsed={isCollapse}>
-        <Menu>
-          <Box paddingLeft={isCollapse ? undefined : "10%"}>
-            <Item 
-              title='Dashboard'
-              to='/'
-              icon=''
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item 
-              title='Movimientos'
-              to='/movements'
-              icon=''
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item 
-              title='Categorias'
-              to='/categories'
-              icon=''
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item 
-              title='Analisis'
-              to='/'
-              icon=''
-              selected={selected}
-              setSelected={setSelected}
-            />
-          </Box>
-          {/* <MenuItem
-            onClick={() => setIsCollapse(!isCollapse)}
-            icon={ isCollapse ? <MenuSharpIcon /> : undefined }
-          >
-            
-          </MenuItem> */}
-        </Menu>
-      </Sidebar>
-    </Box>
+      <DashboardLayout>
+        <PageContainer>
+          <Grid container spacing={ 1 }>
+            <Grid size={5} />
+            <Grid size={12}>
+              <Skeleton height={14} />
+            </Grid>
+            <Grid size={12}>
+              <Skeleton height={14} />
+            </Grid>
+          </Grid>
+        </PageContainer>
+      </DashboardLayout>
+    </AppProvider>
   )
 }
 

@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import DashboardBox from '../../components/DashboardBox';
 
 const gridTemplate = `
@@ -56,10 +56,18 @@ const Dashboard = () => {
         }
       }
     >
-      <DashboardBox gridArea="a"></DashboardBox>
-      <DashboardBox gridArea="b"></DashboardBox>
-      <DashboardBox gridArea="c"></DashboardBox>
-      <DashboardBox gridArea="d"></DashboardBox>
+      <DashboardBox gridArea="a">
+        <Typography> Analisis </Typography>
+      </DashboardBox>
+      <DashboardBox gridArea="b">
+        <Typography> Ingresos </Typography>
+      </DashboardBox>
+      <DashboardBox gridArea="c">
+        <Typography> Egresos </Typography>
+      </DashboardBox>
+      <DashboardBox gridArea="d">
+        <Typography> Inversiones </Typography>
+      </DashboardBox>
     </Box>
   )
 }

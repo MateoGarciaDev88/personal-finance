@@ -1,6 +1,5 @@
 import React from "react";
 
-
 interface Movimiento {
 id: string;
 categoria: "Ingreso" | "Gasto" | "Ahorro" | "Inversión";
